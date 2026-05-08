@@ -30,9 +30,6 @@ export class GameManager extends Component {
     @property
     public roadLength = 100;
 
-    //通过一个空数组保存格子类型
-    private _road: BlockType[] = [];
-
     //引用PlayerController
     @property(PlayerController)
     public PlayerController: PlayerController = null;
@@ -45,10 +42,25 @@ export class GameManager extends Component {
     @property(Label)
     public stepLabel: Label = null;
 
+    //获取UI step的node节点
+    @property(Node)
+    public step: Node | null = null;
+
+    //通过一个空数组保存格子类型
+    private _road: BlockType[] = [];
+
     start() {
         this.setCurState(GameState.GS_MENU)
-        //通过 .node.on 节点来监听事件,最后的this是当前对象
+
+        //通过 .node.on 节点来监听事件,最后一个 this只是一个“路标”，它自己不会作为数据传进去
         this.PlayerController.node.on('JumpEnd', this.onJumpEnd, this)
+    }
+    
+    //监听了就一定要销毁，防止内存泄露
+    protected onDestroy(): void {
+        if (this.PlayerController) {
+            this.PlayerController.node.off('JumpEnd', this.onJumpEnd, this)
+        }
     }
 
     //设置开始游戏的状态切换
@@ -60,10 +72,11 @@ export class GameManager extends Component {
             //禁用player controller的控制有两种方式1.取消控制绑定 2.用bool状态判断是否可以被控制
             this.PlayerController.setIsCanControl(false);
             this.startMenu.active = true; //active方法来判断是否勾选node
-
+            this.step.active = false; //游戏开始时隐藏step标签
         } else if (value === GameState.GS_PLAYING) {
             this.PlayerController.setIsCanControl(true);
             this.startMenu.active = false; //active方法来判断是否勾选node
+            this.step.active = true;
         }
     }
 
@@ -74,11 +87,11 @@ export class GameManager extends Component {
     }
 
     //收集总步数的方法
-    //参数是value也就是总步数
+    //参数是value也就是总步数，这里的参数就是用来收集PlayerController里自定义JumpEnd事件传过来的参数
     onJumpEnd(value: number) {
         //通过.string方法来修改label的值,因为值是number 需要用.toString()方法强制类型转换赋值给label
         this.stepLabel.string = value.toString();
-        
+
         this.checkResult(value);
     }
 

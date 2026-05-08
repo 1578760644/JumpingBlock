@@ -662,6 +662,9 @@
     "stepLabel": {
       "__id__": 30
     },
+    "step": {
+      "__id__": 28
+    },
     "_id": "75kTCvMYxOpaTjbGrE/DSZ"
   },
   {
@@ -822,7 +825,7 @@
       "z": 1
     },
     "_mobility": 0,
-    "_layer": 1073741824,
+    "_layer": 33554432,
     "_euler": {
       "__type__": "cc.Vec3",
       "x": 0,
@@ -901,8 +904,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 248.08799999999997,
-      "y": 560.4290000000001,
+      "x": 308.53099999999995,
+      "y": 564.1669999999999,
       "z": 0
     },
     "_lrot": {
@@ -1024,10 +1027,10 @@
     "__prefab": null,
     "_alignFlags": 33,
     "_target": null,
-    "_left": 0,
-    "_right": 97.06273394775394,
-    "_top": 38.68399999999994,
-    "_bottom": 0,
+    "_left": 227.85673394775392,
+    "_right": 36.61973394775396,
+    "_top": 34.94600000000008,
+    "_bottom": -43.64100000000002,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
     "_isAbsLeft": true,
@@ -1036,8 +1039,8 @@
     "_isAbsBottom": true,
     "_isAbsHorizontalCenter": true,
     "_isAbsVerticalCenter": true,
-    "_originalWidth": 0,
-    "_originalHeight": 0,
+    "_originalWidth": 29.698532104492188,
+    "_originalHeight": 81.774,
     "_alignMode": 2,
     "_lockFlags": 0,
     "_id": "f2kkcqz/BBt4n3FQQDA/Y4"
@@ -1240,8 +1243,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 174.91200000000003,
+      "x": -10.278999999999996,
+      "y": 169.11300000000006,
       "z": 0
     },
     "_lrot": {
